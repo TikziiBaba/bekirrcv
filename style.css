@@ -1,0 +1,184 @@
+/* --- TEMEL AYARLAR --- */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;700&display=swap');
+
+body {
+    margin: 0;
+    background: linear-gradient(135deg, #ffc0cb, #ff69b4, #ff1493);
+    font-family: 'Quicksand', sans-serif;
+    color: #333;
+    overflow-x: hidden;
+}
+
+.main-container {
+    padding: 30px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    z-index: 10;
+    position: relative;
+}
+
+.content-box {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 25px 40px;
+    border-radius: 25px;
+    text-align: center;
+    color: #c71585;
+    width: 90%;
+    max-width: 700px;
+    box-shadow: 0 10px 40px rgba(80, 0, 40, 0.3);
+    animation: fadeIn 1.5s ease-in-out;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+h1 { font-family: 'Pacifico', cursive; font-size: 3em; color: #b3005a; }
+h2 { font-size: 1.8em; animation: pulse 2s infinite; }
+p { font-size: 1.1em; line-height: 1.6; }
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); text-shadow: 0 0 5px #ffc0cb; }
+    50% { transform: scale(1.03); text-shadow: 0 0 15px #ff69b4; }
+}
+
+button {
+    background: linear-gradient(45deg, #ff69b4, #ff1493);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 20, 147, 0.5);
+}
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 20, 147, 0.7);
+}
+
+/* --- ZARF BUTONLARI --- */
+.envelopes-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+.envelope-button {
+    background: linear-gradient(45deg, #f8cdda, #f8a8c4);
+    color: #b3005a;
+    font-size: 0.9em;
+}
+
+/* --- MİNİ OYUN ALANI --- */
+#game-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto 0;
+}
+#game-canvas {
+    background: #ffedf3;
+    border-radius: 20px;
+    width: 100%;
+    border: 3px solid #ffb6c1;
+}
+#score-display {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #ff1493;
+}
+#start-game-button {
+    margin-top: 15px;
+}
+.mobile-controls-info {
+    display: none;
+}
+
+/* YENİ: MOBİL KONTROL BUTONLARI TASARIMI */
+#mobile-controls {
+    display: none; /* Varsayılan olarak gizli */
+    justify-content: space-between;
+    width: 100%;
+    max-width: 600px;
+    margin: 10px auto 0;
+    gap: 10px;
+}
+.control-btn {
+    width: 48%;
+    padding: 15px;
+    font-size: 2em;
+    touch-action: manipulation; /* Mobilde çift tıklama ile zoom'u engeller */
+    -webkit-user-select: none; /* Buton metninin seçilmesini engeller */
+    user-select: none;
+}
+
+/* MOBİL CİHAZ AYARLARI */
+@media (max-width: 768px) {
+    #mobile-controls {
+        display: flex; /* Genişlik 768px'den küçükse göster */
+    }
+    .desktop-controls {
+        display: none; /* Masaüstü talimatını mobilde gizle */
+    }
+    .mobile-controls-info {
+        display: block; /* Mobil talimatını mobilde göster */
+    }
+}
+
+
+/* --- MEKTUP KARTI MODALI --- */
+.modal-overlay {
+    display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.7); justify-content: center; align-items: center;
+}
+.letter-card {
+    position: relative; background: #fffafb; padding: 40px; border-radius: 20px; width: 90%;
+    max-width: 500px; text-align: center; box-shadow: 0 0 50px #ffc0cb; border: 3px solid #ffb6c1;
+    animation: zoomIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.letter-card h3 { font-family: 'Pacifico', cursive; font-size: 2em; color: #b3005a; }
+.letter-card p { font-size: 1.2em; color: #c71585; }
+.close-letter-button {
+    position: absolute; top: 10px; right: 20px; color: #ff69b4; font-size: 35px;
+    font-weight: bold; cursor: pointer; transition: transform 0.2s;
+}
+.close-letter-button:hover { transform: scale(1.2); }
+
+
+/* --- ÖNCEKİ MODÜLLER (İltifat, Geri Sayım vb.) --- */
+.compliment-card { position: relative; background: linear-gradient(135deg, #fff0f5, #ffe4e1); padding: 40px 50px; border-radius: 30px; width: 90%; max-width: 500px; text-align: center; box-shadow: 0 0 50px #ff1493; border: 3px solid white; animation: zoomIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+@keyframes zoomIn { from { transform: scale(0.5) rotate(-15deg); opacity: 0; } to { transform: scale(1) rotate(0deg); opacity: 1; } }
+#card-text { font-family: 'Pacifico', cursive; font-size: 2.2em; color: #d0217a; line-height: 1.5; }
+.close-card-button { position: absolute; top: 15px; right: 20px; color: #ff69b4; font-size: 35px; font-weight: bold; cursor: pointer; transition: transform 0.2s; }
+.close-card-button:hover { transform: scale(1.2); }
+.balloon-container { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; height: 100px; }
+.heart-balloon { position: absolute; bottom: -50px; width: 30px; height: 30px; background-color: #ff1493; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); animation: rise 5s ease-in forwards; opacity: 0.8; }
+.heart-balloon::before { content: ''; position: absolute; width: 30px; height: 30px; background-color: #ff1493; border-radius: 50%; left: -15px; }
+@keyframes rise { 0% { bottom: -50px; opacity: 0.8; transform: rotate(-45deg) scale(1); } 100% { bottom: 120%; opacity: 0; transform: rotate(-45deg) scale(0.5); } }
+audio { width: 100%; margin-top: 15px; border-radius: 50px; }
+#countdown { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
+.unit { display: flex; flex-direction: column; background: #ffedf3; padding: 10px; border-radius: 10px; width: 80px;}
+.unit span { font-size: 2.5em; font-weight: bold; color: #ff1493; }
+.unit label { font-size: 0.9em; color: #d63384; }
+.love-calculator { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; margin: 20px 0; }
+.love-calculator input { padding: 10px; border: 2px solid #ffb6c1; border-radius: 20px; text-align: center; font-family: 'Quicksand', sans-serif; }
+.love-calculator span { font-size: 2em; color: #ff1493; }
+#love-result { font-size: 1.5em; font-weight: bold; margin-top: 20px; min-height: 30px; }
+.heart { position: absolute; width: 20px; height: 20px; opacity: 0; animation: fall 10s linear infinite; z-index: -1; }
+.heart::before, .heart::after { content: ''; position: absolute; left: 10px; top: 0; width: 10px; height: 16px; background: pink; border-radius: 10px 10px 0 0; transform: rotate(-45deg); transform-origin: 0 100%; }
+.heart::after { left: 0; transform: rotate(45deg); transform-origin: 100% 100%; }
+@keyframes fall { 0% { top: -10%; opacity: 1; } 100% { top: 110%; opacity: 0.5; } }
+.mouse-heart { position: absolute; pointer-events: none; font-size: 24px; color: #ff69b4; animation: fadeOut 1s forwards; z-index: 9999; }
+@keyframes fadeOut { from { opacity: 1; transform: scale(1); } to { opacity: 0; transform: scale(0.5); } }

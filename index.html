@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benim Aşkıma ❤️ Tuğçe'mm</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="heart-container"></div>
+
+    <div class="main-container">
+        <section class="content-box">
+            <h1>Canım Sevgilim,</h1>
+            <p>
+                Bu dijital dünya sadece senin için oluşturuldu. Varlığınla hayatıma kattığın her renk,
+                her mutluluk için sana çok aşığım. Seni her şeyden çok seviyorum! <strong>Tuğçee'mm</strong>
+            </p>
+        </section>
+
+        <section class="content-box">
+            <h2>Bu Şarkı İkimiz İçin Çalıyor</h2>
+            <p>Gözlerini kapat ve dinle...</p>
+            <audio controls src="aşk.mp3"></audio>
+        </section>
+
+        <section class="content-box">
+            <h2>Zarflar Sadece Senin İçin... 💌</h2>
+            <p>Ruh haline en uygun olan zarfı seç ve sana olan notumu oku.</p>
+            <div class="envelopes-container">
+                <button class="envelope-button" data-letter="miss">Beni Özlediğinde Aç</button>
+                <button class="envelope-button" data-letter="sad">Mutsuz Hissettiğinde Aç</button>
+                <button class="envelope-button" data-letter="happy">Çok Mutlu Olduğunda Aç</button>
+            </div>
+        </section>
+        
+        <section class="content-box">
+            <h2>Mini Oyun: Kalpleri Yakala! 🎮</h2>
+            <p class="desktop-controls">Sepeti hareket ettirmek için klavyenin ok tuşlarını kullan!</p>
+            <p class="mobile-controls-info">Sepeti hareket ettirmek için aşağıdaki butonları kullan!</p>
+            <div id="game-container">
+                <canvas id="game-canvas" width="600" height="400"></canvas>
+                <div id="score-display">Skor: 0</div>
+                <button id="start-game-button">Oyunu Başlat</button>
+                <div id="mobile-controls">
+                    <button id="left-btn" class="control-btn">◀</button>
+                    <button id="right-btn" class="control-btn">▶</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-box">
+            <h2>Yıl Dönümümüze Kalan Süre</h2>
+            <div id="countdown">
+                <div class="unit"><span id="days">0</span><label>Gün</label></div>
+                <div class="unit"><span id="hours">0</span><label>Saat</label></div>
+                <div class="unit"><span id="minutes">0</span><label>Dakika</label></div>
+                <div class="unit"><span id="seconds">0</span><label>Saniye</label></div>
+            </div>
+        </section>
+
+        <section class="content-box">
+            <h2>Aşk Uyumu Testi</h2>
+            <div class="love-calculator">
+                <input type="text" id="name1" placeholder="Tuğçe'nin Adı">
+                <span>+</span>
+                <input type="text" id="name2" placeholder="Bekir'in Adı">
+                <button id="calculate-love">Hesapla</button>
+            </div>
+            <div id="love-result"></div>
+        </section>
+
+        <section class="content-box">
+            <h2>Sana Bir Sürprizim Var!</h2>
+            <p>Aşağıdaki butona bas ve sadece senin için olan iltifatı gör...</p>
+            <button id="compliment-button">Sürprizi Göster 💕</button>
+        </section>
+    </div>
+
+    <div id="compliment-modal" class="modal-overlay">
+        <div class="compliment-card">
+            <span class="close-card-button">&times;</span>
+            <p id="card-text"></p>
+            <div class="balloon-container"></div>
+        </div>
+    </div>
+
+    <div id="letter-modal" class="modal-overlay">
+        <div class="letter-card">
+            <span class="close-letter-button">&times;</span>
+            <h3 id="letter-title"></h3>
+            <p id="letter-text"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
